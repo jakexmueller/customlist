@@ -93,20 +93,69 @@ namespace TestList
             //Assert
             Assert.AreEqual(expectedValue, actualValue);
 
+        }
+
+        [TestMethod]
+        public void Add_TwoIntegers_ReturnsExpectedIntegers()
+        {
+
+            //Arrange
+            CustomList<int> list = new CustomList<int>;
+            int expectedValues = (3, 4);
+
+            //Act
+            list.Add(1, 2); //[0]
+            list.Add(3, 4); //[1]
+            list.Add(5, 6); //[2]
+            list.Add(7, 8); //[3]
+            list.Add(9, 10); //[4]
+            int actualValues = list[1];
+
+            //Assert
+            Assert.AreEqual(expectedValues, actualValues);
 
         }
 
-        public void Remove()
+        [TestMethod]
+        public void Remove_Integer_ReturnsExpectedInteger()
         {
             //Arange
             CustomList<int> list = new CustomList<int>();           
-            int result;
+            int expectedResult = 8;
 
             //Act
-            result = list.Remove(list[0]);
+            list.Add(2); //[0]
+            list.Add(4); //[1]
+            list.Add(6); //[2]
+            list.Add(8); //[3]
+            list.Add(10); //[4]
+            list.Remove[4];
+            int actualResult = list[3];
 
             //Assert
-            Assert.IsNull(list);
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestMethod]
+        public void Remove_String_ReturnsExpectedString()
+        {
+
+            //Arrange
+            CustomList<string> list = new CustomList<string>;
+            string expectedResult = "Gatorade";
+
+            //Act
+            list.Add("Ginger Ale"); //[0]
+            list.Add("Gatorade"); //[1]
+            list.Add("Lemonade"); //[2]
+            list.Add("Iced Tea"); //[3]
+            list.Add("Water"); //[4]
+            list.Remove[0];
+            string actualResult = list[0];
+
+            //Assert
+            Assert.AreEqual(expectedResult, actualResult);
+
         }
 
         public void ToString()
