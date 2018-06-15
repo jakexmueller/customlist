@@ -8,6 +8,13 @@ namespace customlist
 {
     public class CustomList<T>
     {
+        T items;
+        private int count;
+        private int capacity;
+        public void Add(T item)
+        {
+
+        }
 
         //need generic array
 
