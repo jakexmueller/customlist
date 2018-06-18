@@ -95,12 +95,12 @@ namespace TestList
         }
 
         [TestMethod]
-        public void Add_TwoIntegers_ReturnsExpectedIntegers()
+        public void Add_TwoIntegers_ReturnsIncreasedCount() //count increases
         {
 
             //Arrange
             CustomList<int> list = new CustomList<int>();
-            //int firstExpectedValue = 0;
+            int firstExpectedValue = 4;
             int secondExpectedValue = 5;
 
             //Act
@@ -108,14 +108,13 @@ namespace TestList
             list.Add(2); //[1]
             list.Add(3); //[2]
             list.Add(4); //[3]
-            int firstActualValue = list[4];
+            int firstActualValue = list.Count();
             list.Add(5); //[4]
-            int secondActualValue = list[4];
+            int secondActualValue = list.Count();
 
             //Assert
-            Assert.IsNull(firstActualValue);
+            Assert.AreEqual(firstExpectedValue, firstActualValue);
             Assert.AreEqual(secondExpectedValue, secondActualValue);
-
         }
 
         [TestMethod]
@@ -123,7 +122,7 @@ namespace TestList
         {
             //Arange
             CustomList<int> list = new CustomList<int>();           
-            int expectedResult = 8;
+            int expectedResult = 10;
 
             //Act
             list.Add(2); //[0]
@@ -132,10 +131,31 @@ namespace TestList
             list.Add(8); //[3]
             list.Add(10); //[4]
             list.Remove(8);
-            int actualResult = list[0];
+            int actualResult = list[3];
 
             //Assert
             Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestMethod]
+        public void Remove_Integer_ReturnsExpectedInteger()
+        {
+            //Arange
+            CustomList<int> list = new CustomList<int>();
+            int expectedResult = 5;
+            
+            //Act
+            list.Add(2); //[0]
+            list.Add(4); //[1]
+            list.Add(6); //[2]
+            list.Add(8); //[3]
+            list.Add(10); //[4]
+            list.Remove(88);
+            int actualResult = list.Count();
+
+            //Assert
+            Assert.AreEqual(actualResult, expectedResult);
+            
         }
 
         [TestMethod]
@@ -160,13 +180,14 @@ namespace TestList
 
         }
 
-        [TestMethod]
-        public void Remove_Integer_ReturnsZero()
+        [TestMethod]//////////////////////////
+        public void Remove_Integer_ReturnsDecreasedCount()
         {
 
             //Arrange
             CustomList<int> list = new CustomList<int>();
-            int expectedResult = 0;
+            int firstExpectedCount = 5;
+            int secondExpectedCount = 4;
 
             //Act
             list.Add(50); //[0]
@@ -174,21 +195,21 @@ namespace TestList
             list.Add(150); //[2]
             list.Add(200); //[3]
             list.Add(250); //[4] 
+            int firstActualCount = list.Count();
             list.Remove(250);
-            int actualResult = list[4];
+            int secondActualCount = list.Count();
 
             //Assert
-            Assert.AreEqual(expectedResult, actualResult);
-
+            Assert.AreEqual(firstExpectedCount, firstActualCount);
+            Assert.AreEqual(secondActualCount, secondExpectedCount);
         }
 
         [TestMethod]
-        public void Remove_Strings_ReturnsTwoDifferentStrings()
+        public void Remove_Strings_ReturnsNoStringChange()
         {
 
             //Arrange
-            CustomList<string> list = new CustomList<string>();
-            
+            CustomList<string> list = new CustomList<string>();     
             string ExpectedResult = "Carlos Santana";
 
             //Act
@@ -198,13 +219,10 @@ namespace TestList
             list.Add("Eddie Van Halen"); //[3]           
             list.Add("Carlos Santana"); //[4]
             string ActualResult = list[4];
-            list.Remove("Carlos Santana");
-            
+            list.Remove("Carlos Santana");          
 
             //Assert
             Assert.AreEqual(ActualResult, ExpectedResult);
-            Assert.IsNull(list[4]);
-
         }
 
         [TestMethod]
@@ -229,22 +247,103 @@ namespace TestList
 
         }
 
-
-        public void ToString()
+        [TestMethod]
+        public void ToString_Integer_ReturnsString()
         {
 
             //Arange
-            CustomList list = new CustomList();
-            string actualResult;
-            
+            CustomList<int> list = new CustomLis<int>();
+           
             //Act
-            actualResult = list[0].GetType();
+            list.Add(10); //[0]
+            list.Add(20); //[1]
+            list.Add(30); //[2]
+            list.Add(40); //[3]
+            list.Add(50); //[4]
+            int actualResult = list.ToString();
 
             //Assert
-            Assert.IsTrue(actualResult == string);
+            Assert.IsInstanceOfType(actualResult, string);
 
         }
 
+        [TestMethod]
+        public void ToString_String_ReturnsNullString()
+        {
+
+            //Arrange
+            CustomList<string> list = new CustomList<string>();
+            string expectedResult = null;
+
+            //Act
+            list.Add("Ears"); //[0]
+            list.Add("Eyes"); //[1]
+            list.Add("Nose"); //[2]
+            list.Add("Hands"); //[3]
+            list.Add("Hands"); //[4]
+            list.ToString();
+            string actualResult = list[1];
+
+            //Assert
+            Assert.AreEqual(actualResult, expectedResult);
+
+        }
+
+        [TestMethod]
+        public void ToString_Boolean_ReturnsSpecificString()
+        {
+
+            //Arrange
+            CustomList<bool> list = new CustomList<bool>();
+            string expectedResult = "true";
+            bool truth = true;
+            bool fallacy = false;
+
+            //Act
+            list.Add(truth);
+            list.Add(fallacy);
+            list.ToString();
+            string actualResult = List[0];
+
+            //Assert
+            Assert.AreEqual(actualResult, expectedResult);
+        }
+
+        [TestMethod]
+        public void ToString_Integer_ReturnsMathSolution()
+        {
+
+            //Arrange
+            CustomList<int> list = new CustomList<int>();
+            string expectedResult = "34";
+
+            //Act
+            list.Add(14);
+            list.Add(20);
+            string actualResult = (list[0]) + (list[1]);
+            actualResult = list.ToString();
+
+            //Assert
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestMethod]
+        public void ToString_Integer_ReturnsNonInteger()
+        {
+
+            //Arrange
+            CustomList<int> list = new CustomList<int>();
+
+            //Act
+            list.Add(25);
+            list.Add(22);
+            list.Add(20);
+            list.Add(4);
+            int actualResult = list.ToString();
+
+            //Assert
+            Assert.IsInstanceOfType(actualResult, string);
+        }
 
     }
 }
