@@ -8,17 +8,78 @@ namespace customlist
 {
     public class CustomList<T>
     {
-        T items;
+        T[] array;               
         private int count;
         private int capacity;
-        public void Add(T item)
+        //Contructor
+        public CustomList()
         {
-
+            capacity = 4;
+            count = 0;
+            array = new T[capacity];
+            
         }
 
-        //need generic array
+        //properties
 
-        //need count member variable
+        public int Capacity
+        {
+            get
+            {
+                return capacity;
+            }
+            set
+            {
+                capacity = value;
+            }
+        }
+
+        public int Count
+        {
+            get
+            {
+                return count;
+            }
+            set
+            {
+                count = value;
+            }
+        }
+        
+        public void Add(T item)
+        {
+            if(count >= (capacity*.75))
+            {
+                capacity *= 2;
+                T[] placeHolderArray = new T[capacity];
+                for(int i=0; i<count; i++)
+                {
+                    placeHolderArray[i] = array[i];
+                }
+                array = placeHolderArray;
+            }          
+            array[count] = item;
+            count++;
+        }
+
+        public bool Remove(T item)
+        {
+            T[] placeHolderArray = new T[capacity];
+            for(int i = 0; i<=count; i++)
+            {
+                if (array[i].Equals(item))
+                {
+                    return true;
+                }
+                else
+                {
+                    placeHolderArray[i] = array[i];
+                }
+            }
+            return true;
+        }
+        //Array.Resize(ref array, newsize); 
+        //array[newsize-1] = "newvalue"
 
         //will need indexer
 

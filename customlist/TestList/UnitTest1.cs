@@ -151,7 +151,7 @@ namespace TestList
             list.Add(8); //[3]
             list.Add(10); //[4]
             list.Remove(88);
-            int actualResult = list.Count();
+            int actualResult = list.Count;
 
             //Assert
             Assert.AreEqual(actualResult, expectedResult);
@@ -195,35 +195,15 @@ namespace TestList
             list.Add(150); //[2]
             list.Add(200); //[3]
             list.Add(250); //[4] 
-            int firstActualCount = list.Count();
+            int firstActualCount = list.Count;
             list.Remove(250);
-            int secondActualCount = list.Count();
+            int secondActualCount = list.Count;
 
             //Assert
             Assert.AreEqual(firstExpectedCount, firstActualCount);
             Assert.AreEqual(secondActualCount, secondExpectedCount);
         }
 
-        [TestMethod]
-        public void Remove_Strings_ReturnsNoStringChange()
-        {
-
-            //Arrange
-            CustomList<string> list = new CustomList<string>();     
-            string ExpectedResult = "Carlos Santana";
-
-            //Act
-            list.Add("Stevie Ray Vaughan"); //[0]
-            list.Add("Jimi Hendrix"); //[1]
-            list.Add("Angus Young"); //[2]
-            list.Add("Eddie Van Halen"); //[3]           
-            list.Add("Carlos Santana"); //[4]
-            string ActualResult = list[4];
-            list.Remove("Carlos Santana");          
-
-            //Assert
-            Assert.AreEqual(ActualResult, ExpectedResult);
-        }
 
         [TestMethod]
         public void Remove_Integer_ReturnsNewInteger()
@@ -247,12 +227,14 @@ namespace TestList
 
         }
 
+        // IF REMOVE METHOD RETURNS A BOOLEAN, YOU NEED TWO MORE TESTS
+
         [TestMethod]
         public void ToString_Integer_ReturnsString()
         {
 
             //Arange
-            CustomList<int> list = new CustomLis<int>();
+            CustomList<int> list = new CustomList<int>();
            
             //Act
             list.Add(10); //[0]
@@ -270,10 +252,10 @@ namespace TestList
         [TestMethod]
         public void ToString_String_ReturnsNullString()
         {
-
+            
             //Arrange
             CustomList<string> list = new CustomList<string>();
-            string expectedResult = null;
+            string expectedResult = "Ears Eyes Nose Hands Hands";
 
             //Act
             list.Add("Ears"); //[0]
@@ -281,8 +263,7 @@ namespace TestList
             list.Add("Nose"); //[2]
             list.Add("Hands"); //[3]
             list.Add("Hands"); //[4]
-            list.ToString();
-            string actualResult = list[1];
+            string actualResult = list.ToString();
 
             //Assert
             Assert.AreEqual(actualResult, expectedResult);
@@ -295,7 +276,7 @@ namespace TestList
 
             //Arrange
             CustomList<bool> list = new CustomList<bool>();
-            string expectedResult = "true";
+            string expectedResult = "true false";
             bool truth = true;
             bool fallacy = false;
 
