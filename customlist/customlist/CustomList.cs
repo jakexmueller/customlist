@@ -8,7 +8,7 @@ namespace customlist
 {
     public class CustomList<T>
     {
-        T[] array;               
+        private T[] array = new T[100];
         private int count;
         private int capacity;
         //Contructor
@@ -21,6 +21,18 @@ namespace customlist
         }
 
         //properties
+
+        public T this[int i]
+        {
+            get
+            {
+                return array[i];
+            }
+            set
+            {
+                array[i] = value;
+            }
+        }
 
         public int Capacity
         {
