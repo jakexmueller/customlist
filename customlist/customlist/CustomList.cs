@@ -74,22 +74,30 @@ namespace customlist
             count++;
         }
 
-        public bool Remove(T item)
+        public CustomList<T> Remove(T item)
         {
+
+            CustomList<T> list = new CustomList<T>(); 
             T[] placeHolderArray = new T[capacity];
-            for(int i = 0; i<=count; i++)
+            for(int i = 0; i<count; i++)
             {
                 if (array[i].Equals(item))
                 {
-                    return true;
+                    T removedValue = array[i];
+                    count--;
                 }
                 else
                 {
-                    placeHolderArray[i] = array[i];
+                    list.Add(array[i]);
+                    //count--;
                 }
+
             }
-            return true;
+            
+            return list;
         }
+
+
         //Array.Resize(ref array, newsize); 
         //array[newsize-1] = "newvalue"
 
