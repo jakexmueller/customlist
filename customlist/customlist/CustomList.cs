@@ -97,6 +97,16 @@ namespace customlist
             return list;
         }
 
+        //public override string ToString()
+        //{
+        //    for (int i = 0; i <= count; i++)
+        //    {
+        //        yield return "[i], ";
+        //    }
+        //    yield return "sick";
+          
+        //}
+
 
         //Array.Resize(ref array, newsize); 
         //array[newsize-1] = "newvalue"

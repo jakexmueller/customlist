@@ -117,25 +117,6 @@ namespace TestList
             Assert.AreEqual(secondExpectedValue, secondActualValue);
         }
 
-        [TestMethod]
-        public void Remove_Integer_ReturnsExpectedInteger()
-        {
-            //Arange
-            CustomList<int> list = new CustomList<int>();           
-            int expectedResult = 10;
-
-            //Act
-            list.Add(2); //[0]
-            list.Add(4); //[1]
-            list.Add(6); //[2]
-            list.Add(8); //[3]
-            list.Add(10); //[4]
-            list = list.Remove(8);
-            int actualResult = list[3];
-
-            //Assert
-            Assert.AreEqual(expectedResult, actualResult);
-        }
 
         [TestMethod]
         public void Remove_Integer_ReturnsNoChangeInListCount()

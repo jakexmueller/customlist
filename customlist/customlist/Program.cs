@@ -24,8 +24,8 @@ namespace customlist
             Console.WriteLine(list[2]);
             Console.WriteLine(list[3]);
             Console.WriteLine(list[4]);
-            list = list.Remove(88);
-            Console.WriteLine(list[2]);
+            list = list.Remove(4);
+            Console.WriteLine(list[3]);
             Console.WriteLine("Count: " + list.Count);
             Console.ReadLine();
         
